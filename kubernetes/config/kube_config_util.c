@@ -53,8 +53,8 @@ char *kubeconfig_mk_cert_key_tempfile(const char *data)
     char *tempfile_name_template = calloc(tmpFileNameSize, sizeof(char));
     snprintf(tempfile_name_template, tmpFileNameSize, KUBE_CONFIG_TEMPFILE_NAME_TEMPLATE, tempdir_env);
     char *filename = _mktemp(tempfile_name_template);
-    free(tempfile_name_template);
     int fd = _sopen( filename, O_CREAT|O_WRONLY, _SH_DENYWR );
+    free(tempfile_name_template);
 #endif
 
     if (-1 == fd) {
